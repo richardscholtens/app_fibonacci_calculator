@@ -1,0 +1,53 @@
+
+{% extends "layout.html" %}
+{% set active_page = 'retrieve_sequence' %}
+{% block content %}
+<div class="container">
+    <h1 class="mt-5">Retrieve sequence</h1>
+    <div class="row">
+      <p class="lead">By filling in the form below one can retrieve the Fibonacci Sequence.
+      One has to fill in a number that is equal to the length of the wanted Fibonacci Sequence.</p>
+    </div>
+    <div class="col-lg-7 offset-lg-2 my-5">
+        <h2>Feeling lucky?</h2><hr>
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                {% for type, content in messages %}
+                    <div class="alert alert-{{ type }} alert-dismissible my4" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ content }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="{{ url_for('calculators.retrieve_sequence')}}">
+            {{ form_sequence.hidden_tag() }}
+            <div class="form-group">
+                {{ form_sequence.number.label}}
+                {{ form_sequence.number(class="form-control") }}
+            </div>
+            <hr>
+            {% if sequence %}
+                <div class="container">
+                    <p>
+                        Fibonacci Sequence: {{ sequence }}
+                        <br>
+                        <br>
+                        Python speed: {{ end1 }}
+                        <br>
+                        <br>
+                        Cython speed: {{ end2 }}
+                        <br>
+                        <br>
+                        Times faster: {{ times_faster }}%
+                    </p>
+                </div>
+            {% endif %}
+            {{form_sequence.submit(class="btn btn-primary form-control") }}
+        </form>
+    </div>
+</div>
+{% endblock %}
+

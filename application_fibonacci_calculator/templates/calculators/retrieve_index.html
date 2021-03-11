@@ -1,0 +1,54 @@
+
+{% extends "layout.html" %}
+{% set active_page = 'retrieve_index' %}
+{% block content %}
+<div class="container">
+    <h1 class="mt-5">Retrieve index</h1>
+    <div class="row">
+        <p class="lead">By filling in the form below one can retrieve the index of the closest Fibonacci Number in a
+          Fibonacci Sequence. One has to fill in a number that as input and the system will return a Fibonacci Number.
+        </p>
+        <div class="col-lg-7 offset-lg-2 my-5">
+            <h2>Feeling lucky?</h2><hr>
+            {% with messages = get_flashed_messages(with_categories=True) %}
+                {% if messages %}
+                    {% for type, content in messages %}
+                        <div class="alert alert-{{ type }} alert-dismissible my4" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{ content }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form method="POST" action="{{ url_for('calculators.retrieve_index')}}">
+                {{ form_index.hidden_tag() }}
+                <div class="form-group">
+                    {{ form_index.number.label}}
+                    {{ form_index.number(class="form-control") }}
+                </div>
+                <hr>
+                {% if index %}
+                    <div class="container">
+                        <p>
+                            Fibonacci Index: {{ index }}
+                            <br>
+                            <br>
+                            Python speed: {{ end1 }}
+                            <br>
+                            <br>
+                            Cython speed: {{ end2 }}
+                            <br>
+                            <br>
+                            Times faster: {{ times_faster }}%
+                        </p>
+                    </div>
+                {% endif %}
+                {{form_index.submit(class="btn btn-primary form-control") }}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

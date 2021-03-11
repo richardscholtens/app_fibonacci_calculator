@@ -1,0 +1,39 @@
+
+{% extends "layout.html" %}
+{% set active_page = 'home' %}
+{% block content %}
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+    
+      <h1 class="display-3">Welcome to Flask Webserver Fibonacci Sequence</h1>
+    
+      <p>This is a tool that allows users to retrieve specific information about the Fibonacci Sequence.</p>
+      <p>This website was created with the help of the Cookiecutter-Flask GitHub repository.<br><a href="https://github.com/cookiecutter-flask/cookiecutter-flask" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    </div>
+</div><!-- /.jumbotron -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <h2><i class="fa fa-code"></i> Retrieve Fibonacci Sequence</h2>
+      <p>With this module it is possible to retrieve a Fibonacci Sequence. By giving a number as input the system will
+      create a Fibonacci Sequence in equal length and show the contents.</p>
+      <p><a class="btn btn-outline-secondary" href="{{ url_for('calculators.retrieve_sequence') }}">Retrieve sequence &raquo;</a></p>
+    </div>
+    <div class="col-lg-4">
+      <h2><i class="fa fa-flask"></i> Retrieve Fibonacci Number</h2>
+      <p>With this module it is possible to retrieve the nth number of the Fibonacci Sequence. By giving a number as
+          input the system will create a Fibonacci Sequence in equal length and shows the Fibonacci Number corresponding
+          to the given index.</p>
+      <p><a href="{{ url_for('calculators.retrieve_number') }}" class="btn btn-outline-secondary">Retrieve number &raquo;</a></p>
+   </div>
+    <div class="col-lg-4">
+      <h2><i class="fa fa-edit"></i> Retrieve closest Fibonacci Index</h2>
+      <p>With this module it is possible to retrieve the closest index of a Fibonacci Number</p>
+      <p><a href="{{ url_for('calculators.retrieve_index') }}" class="btn btn-outline-secondary">Retrieve index &raquo;</a></p>
+    </div>
+  </div><!-- /.row -->
+</div>
+{% endblock %}
+

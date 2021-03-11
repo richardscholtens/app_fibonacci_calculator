@@ -1,0 +1,108 @@
+/* =============================================================================
+   App specific CSS file.
+   ========================================================================== */
+
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.container-narrow{
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+/* Forms */
+
+.navbar-form input[type="text"],
+.navbar-form input[type="password"] {
+  width: 180px;
+}
+
+
+.form-register {
+  width: 50%;
+}
+
+.form-register .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #999999;
+}
+
+footer a {
+  color: #999999;
+}
+
+footer p {
+  float: right;
+  margin-right: 25px;
+}
+
+footer ul {
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 10px;
+}
+
+footer .company {
+  float: left;
+  margin-left: 25px;
+}
+
+footer .footer-nav {
+  float: right;
+  margin-right: 25px;
+  list-style: none;
+}
+
+
+/* Added styles after implementing Cookiecutter-Flask repository. */
+
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top {
+    /*background-color: rgb(233, 131, 2) !important;*/
+background: rgb(0,0,0);
+background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(233,131,2,1) 40%, rgba(233,131,2,0.9556197478991597) 86%, rgba(255,188,0,1) 100%);
+}
+
+a.navbar-brand {
+    color: rgb(51, 51, 51);
+}
+
+/* Do not show logo on mobile phone. */
+
+@media only screen and (max-width: 600px) {
+    img.mob-no-show {
+        display: none;
+    }
+}
+

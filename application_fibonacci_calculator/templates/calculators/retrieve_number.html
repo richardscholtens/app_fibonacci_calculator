@@ -1,0 +1,55 @@
+
+{% extends "layout.html" %}
+{% set active_page = 'retrieve_number' %}
+{% block content %}
+<div class="container">
+    <h1 class="mt-5">Retrieve number</h1>
+    <div class="row">
+        <p class="lead">
+            By filling in the form below one can retrieve the Fibonacci Number corresponding to the input.
+            One has to fill in an index number and the system will retrieve the correct Fibonacci Number.
+        </p>
+        <div class="col-lg-7 offset-lg-2 my-5">
+            <h2>Feeling lucky?</h2><hr>
+            {% with messages = get_flashed_messages(with_categories=True) %}
+                {% if messages %}
+                    {% for type, content in messages %}
+                        <div class="alert alert-{{ type }} alert-dismissible my4" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{ content }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form method="POST" action="{{ url_for('calculators.retrieve_number')}}">
+                {{ form_number.hidden_tag() }}
+                <div class="form-group">
+                    {{ form_number.number.label}}
+                    {{ form_number.number(class="form-control") }}
+                </div>
+                <hr>
+                {% if number %}
+                    <div class="container">
+                        <p>
+                            Fibonacci Number: {{ number }}
+                            <br>
+                            <br>
+                            Python speed: {{ end1 }}
+                            <br>
+                            <br>
+                            Cython speed: {{ end2 }}
+                            <br>
+                            <br>
+                            Times faster: {{ times_faster }}%
+                        </p>
+                    </div>
+                {% endif %}
+                {{form_number.submit(class="btn btn-primary form-control") }}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
