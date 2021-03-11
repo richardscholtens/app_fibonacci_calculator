@@ -43,4 +43,3 @@ environs==9.3.1
 # Cython library
 fibonacci-calculator==0.1.28
 
-flask_lint==0.1.dev20171129
